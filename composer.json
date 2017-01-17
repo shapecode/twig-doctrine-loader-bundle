@@ -30,10 +30,13 @@
     "require": {
         "php": "~5.5|~7.0",
 
-        "symfony/dependency-injection": "~2.2|~3.0",
-        "symfony/http-kernel": "~2.2|~3.0",
-        "symfony/config": "~2.2|~3.0",
-        "symfony/twig-bundle": "~2.2|~3.0",
+        "symfony/dependency-injection": "~2.7|~3.0",
+        "symfony/http-kernel": "~2.7|~3.0",
+        "symfony/config": "~2.7|~3.0",
+        "symfony/twig-bundle": "~2.7|~3.0",
+
+        "doctrine/doctrine-bundle": "~1.6",
+        "doctrine/orm": "~2.5",
 
         "twig/twig": "~1.18|~2.0"
     },
