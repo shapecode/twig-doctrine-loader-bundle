@@ -11,7 +11,6 @@ use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface
  *
  * @package Shapecode\Bundle\TwigDoctrineLoaderBundle\Repository
  * @author  Nikita Loges
- * @company tenolo GbR
  */
 class TemplateRepository extends EntityRepository implements TemplateRepositoryInterface
 {

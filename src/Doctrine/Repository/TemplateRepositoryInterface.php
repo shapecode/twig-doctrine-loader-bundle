@@ -10,7 +10,6 @@ use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface
  *
  * @package Shapecode\Bundle\TwigDoctrineLoaderBundle\Doctrine\Repository
  * @author  Nikita Loges
- * @company tenolo GbR
  */
 interface TemplateRepositoryInterface extends ObjectRepository
 {

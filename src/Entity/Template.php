@@ -10,7 +10,6 @@ use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface
  *
  * @package Shapecode\Bundle\TwigDoctrineLoaderBundle\Entity
  * @author  Nikita Loges
- * @company tenolo GbR
  *
  * @ORM\Entity(repositoryClass="Shapecode\Bundle\TwigDoctrineLoaderBundle\Repository\TemplateRepository")
  */

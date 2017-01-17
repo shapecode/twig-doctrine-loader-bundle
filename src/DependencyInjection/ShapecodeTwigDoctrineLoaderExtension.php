@@ -14,7 +14,6 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @package Shapecode\Bundle\TwigStringLoaderBundle\DependencyInjection
  * @author  Nikita Loges
- * @company tenolo GbR
  */
 class ShapecodeTwigDoctrineLoaderExtension extends Extension implements PrependExtensionInterface
 {

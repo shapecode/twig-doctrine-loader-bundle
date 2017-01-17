@@ -7,7 +7,6 @@ namespace Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces;
  *
  * @package Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces
  * @author  Nikita Loges
- * @company tenolo GbR
  */
 interface TemplateInterface
 {
