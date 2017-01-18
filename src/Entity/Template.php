@@ -12,6 +12,7 @@ use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface
  * @author  Nikita Loges
  *
  * @ORM\Entity(repositoryClass="Shapecode\Bundle\TwigDoctrineLoaderBundle\Repository\TemplateRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Template implements TemplateInterface
 {
@@ -110,6 +111,15 @@ class Template implements TemplateInterface
     public function setEnable($enable)
     {
         $this->enable = $enable;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function updateModifiedAt()
+    {
+        $this->setModifiedAt(new \DateTime());
     }
 
     /**
