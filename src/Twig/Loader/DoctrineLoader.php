@@ -31,13 +31,7 @@ class DoctrineLoader implements \Twig_LoaderInterface, \Twig_SourceContextLoader
      */
     public function getSource($name)
     {
-        $template = $this->getRepository()->findOneByName($name);
-
-        if ($template) {
-            return $template->getCode();
-        }
-
-        return null;
+        return $this->getTemplate($name)->getCode();
     }
 
     /**
@@ -45,7 +39,7 @@ class DoctrineLoader implements \Twig_LoaderInterface, \Twig_SourceContextLoader
      */
     public function getSourceContext($name)
     {
-        $template = $this->getRepository()->findOneByName($name);
+        $template = $this->getTemplate($name);
 
         return new \Twig_Source($template->getCode(), $name);
     }
@@ -63,7 +57,7 @@ class DoctrineLoader implements \Twig_LoaderInterface, \Twig_SourceContextLoader
      */
     public function isFresh($name, $time)
     {
-        return false;
+        return $this->getTemplate($name)->getModifiedAt()->getTimestamp() <= $time;
     }
 
     /**
@@ -82,6 +76,24 @@ class DoctrineLoader implements \Twig_LoaderInterface, \Twig_SourceContextLoader
         }
 
         return true;
+    }
+
+    /**
+     * @param $name
+     *
+     * @return TemplateInterface
+     * @throws \Twig_Error_Loader
+     */
+    protected function getTemplate($name)
+    {
+        /** @var TemplateInterface $template */
+        $template = $this->getRepository()->findOneByName($name);
+
+        if ($template === null) {
+            throw new \Twig_Error_Loader(sprintf('Unable to find template "%s".', $name));
+        }
+
+        return $template;
     }
 
     /**

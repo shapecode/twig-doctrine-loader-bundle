@@ -43,6 +43,12 @@ class Template implements TemplateInterface
     protected $enable;
 
     /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    protected $modifiedAt;
+
+    /**
      * @return integer
      */
     public function getId()
@@ -104,5 +110,21 @@ class Template implements TemplateInterface
     public function setEnable($enable)
     {
         $this->enable = $enable;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getModifiedAt()
+    {
+        return $this->modifiedAt;
+    }
+
+    /**
+     * @param \DateTime $modifiedAt
+     */
+    public function setModifiedAt(\DateTime $modifiedAt)
+    {
+        $this->modifiedAt = $modifiedAt;
     }
 }

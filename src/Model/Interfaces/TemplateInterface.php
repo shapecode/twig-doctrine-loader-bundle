@@ -50,4 +50,14 @@ interface TemplateInterface
      * @param bool $enable
      */
     public function setEnable($enable);
+
+    /**
+     * @return \DateTime
+     */
+    public function getModifiedAt();
+
+    /**
+     * @param \DateTime $modifiedAt
+     */
+    public function setModifiedAt(\DateTime $modifiedAt);
 }
