@@ -3,8 +3,7 @@
 namespace Shapecode\Bundle\TwigDoctrineLoaderBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Shapecode\Bundle\TwigDoctrineLoaderBundle\Doctrine\Repository\TemplateRepositoryInterface;
-use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface;
+use Shapecode\Bundle\TwigDoctrineLoaderBundle\Entity\TemplateInterface;
 
 /**
  * Class TemplateRepository

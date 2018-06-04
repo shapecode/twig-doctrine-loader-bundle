@@ -1,14 +1,8 @@
-parameters:
-
-    # twig
-    shapecode_twig_doctrine_loader.twig_loader.doctrine.class: Shapecode\Bundle\TwigDoctrineLoaderBundle\Twig\Loader\DoctrineLoader
-    shapecode_twig_doctrine_loader.twig_loader.doctrine.priority: 10
-
 services:
 
-    # twig
     shapecode_twig_doctrine_loader.twig_loader.doctrine:
-        class: "%shapecode_twig_doctrine_loader.twig_loader.doctrine.class%"
-        arguments: ['@doctrine.orm.entity_manager']
+        class: Shapecode\Bundle\TwigDoctrineLoaderBundle\Twig\Loader\DoctrineLoader
+        arguments:
+            - '@doctrine'
         tags:
-            - { name: twig.loader, priority: '%shapecode_twig_doctrine_loader.twig_loader.doctrine.priority%' }
+            - { name: twig.loader, priority: 10 }

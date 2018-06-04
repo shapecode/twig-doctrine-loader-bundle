@@ -3,7 +3,6 @@
 namespace Shapecode\Bundle\TwigDoctrineLoaderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface;
 
 /**
  * Class Template

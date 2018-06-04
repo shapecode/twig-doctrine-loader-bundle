@@ -1,5 +1,0 @@
-parameters:
-
-    # twig
-    shapecode_twig_doctrine_loader.target_entity_resolver.template.class: Shapecode\Bundle\TwigDoctrineLoaderBundle\Entity\Template
-

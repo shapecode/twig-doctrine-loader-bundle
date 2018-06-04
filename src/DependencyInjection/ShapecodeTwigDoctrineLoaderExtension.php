@@ -2,7 +2,8 @@
 
 namespace Shapecode\Bundle\TwigDoctrineLoaderBundle\DependencyInjection;
 
-use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface;
+use Shapecode\Bundle\TwigDoctrineLoaderBundle\Entity\Template;
+use Shapecode\Bundle\TwigDoctrineLoaderBundle\Entity\TemplateInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -32,17 +33,12 @@ class ShapecodeTwigDoctrineLoaderExtension extends Extension implements PrependE
      */
     public function prepend(ContainerBuilder $container)
     {
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('entity.yml');
-
-        $doctrine = [
+        $container->prependExtensionConfig('doctrine', [
             'orm' => [
                 'resolve_target_entities' => [
-                    TemplateInterface::class => '%shapecode_twig_doctrine_loader.target_entity_resolver.template.class%',
+                    TemplateInterface::class => Template::class,
                 ]
             ]
-        ];
-
-        $container->prependExtensionConfig('doctrine', $doctrine);
+        ]);
     }
 }

@@ -1,9 +1,8 @@
 <?php
 
-namespace Shapecode\Bundle\TwigDoctrineLoaderBundle\Doctrine\Repository;
+namespace Shapecode\Bundle\TwigDoctrineLoaderBundle\Repository;
 
 use Doctrine\Common\Persistence\ObjectRepository;
-use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface;
 
 /**
  * Interface TemplateRepositoryInterface

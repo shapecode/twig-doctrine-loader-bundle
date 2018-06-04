@@ -2,9 +2,13 @@
 
 namespace Shapecode\Bundle\TwigDoctrineLoaderBundle\Twig\Loader;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Shapecode\Bundle\TwigDoctrineLoaderBundle\Doctrine\Repository\TemplateRepositoryInterface;
 use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface;
+use Twig\Error\LoaderError;
+use Twig\Loader\ExistsLoaderInterface;
+use Twig\Loader\LoaderInterface;
+use Twig\Loader\SourceContextLoaderInterface;
 
 /**
  * Class DoctrineLoader
@@ -12,18 +16,18 @@ use Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces\TemplateInterface
  * @package Shapecode\Bundle\TwigDoctrineLoaderBundle\Twig\Loader
  * @author  Nikita Loges
  */
-class DoctrineLoader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterface, \Twig_ExistsLoaderInterface
+class DoctrineLoader implements LoaderInterface, SourceContextLoaderInterface, ExistsLoaderInterface
 {
 
-    /** @var EntityManagerInterface */
-    protected $entityManager;
+    /** @var ManagerRegistry */
+    protected $registry;
 
     /**
-     * @param EntityManagerInterface $entityManager
+     * @param ManagerRegistry $registry
      */
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(ManagerRegistry $registry)
     {
-        $this->entityManager = $entityManager;
+        $this->registry = $registry;
     }
 
     /**
@@ -67,7 +71,7 @@ class DoctrineLoader implements \Twig_LoaderInterface, \Twig_SourceContextLoader
     {
         $template = $this->getRepository()->findOneByName($name);
 
-        if (is_null($template)) {
+        if ($template === null) {
             return false;
         }
 
@@ -82,7 +86,7 @@ class DoctrineLoader implements \Twig_LoaderInterface, \Twig_SourceContextLoader
      * @param $name
      *
      * @return TemplateInterface
-     * @throws \Twig_Error_Loader
+     * @throws LoaderError
      */
     protected function getTemplate($name)
     {
@@ -90,7 +94,7 @@ class DoctrineLoader implements \Twig_LoaderInterface, \Twig_SourceContextLoader
         $template = $this->getRepository()->findOneByName($name);
 
         if ($template === null) {
-            throw new \Twig_Error_Loader(sprintf('Unable to find template "%s".', $name));
+            throw new LoaderError(sprintf('Unable to find template "%s".', $name));
         }
 
         return $template;
@@ -101,6 +105,6 @@ class DoctrineLoader implements \Twig_LoaderInterface, \Twig_SourceContextLoader
      */
     protected function getRepository()
     {
-        return $this->entityManager->getRepository(TemplateInterface::class);
+        return $this->registry->getRepository(TemplateInterface::class);
     }
 }

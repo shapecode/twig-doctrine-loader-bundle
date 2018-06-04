@@ -1,6 +1,6 @@
 <?php
 
-namespace Shapecode\Bundle\TwigDoctrineLoaderBundle\Model\Interfaces;
+namespace Shapecode\Bundle\TwigDoctrineLoaderBundle\Entity;
 
 /**
  * Interface TemplateInterface
